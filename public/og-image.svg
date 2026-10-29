@@ -1,0 +1,38 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="maroonBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#401421" />
+      <stop offset="50%" stop-color="#2B1019" />
+      <stop offset="100%" stop-color="#1C1015" />
+    </linearGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5E8C7" />
+      <stop offset="50%" stop-color="#D6B477" />
+      <stop offset="100%" stop-color="#8C6C35" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#maroonBg)" />
+  <rect x="40" y="40" width="1120" height="550" rx="20" stroke="#D6B477" stroke-opacity="0.3" stroke-width="2" />
+
+  <!-- SV Monogram -->
+  <g transform="translate(100, 100)">
+    <polygon points="30,6 70,6 94,30 94,70 70,94 30,94 6,70 6,30" stroke="url(#goldText)" stroke-width="3" fill="#641E32" />
+    <path d="M 64 28 C 64 22, 42 20, 36 28 C 30 36, 44 42, 54 48 C 66 54, 70 64, 62 74 C 54 84, 34 82, 32 72" stroke="url(#goldText)" stroke-width="5" stroke-linecap="round" />
+    <path d="M 44 38 L 56 68 L 72 38" stroke="url(#goldText)" stroke-width="4.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Titles -->
+  <text x="240" y="160" font-family="serif" font-size="48" fill="#F7F1E8" font-weight="bold">SURAJ VISHWAKARMA</text>
+  <text x="240" y="210" font-family="sans-serif" font-size="24" fill="#D6B477" letter-spacing="4">FULL STACK DEVELOPER — DIGITAL EXPERIENCES</text>
+
+  <text x="100" y="340" font-family="serif" font-size="44" fill="#FCFAF6">Building Digital Experiences That Work.</text>
+  <text x="100" y="400" font-family="sans-serif" font-size="24" fill="#EFE4D4" opacity="0.8">Next.js • React • Node.js • Python • FastAPI • PostgreSQL • Modern 3D Web</text>
+
+  <!-- Projects -->
+  <text x="100" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ IntelliTwin AI (Cyber ML)</text>
+  <text x="460" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ Nexora Social (Workflows)</text>
+  <text x="830" y="490" font-family="monospace" font-size="20" fill="#D6B477">✦ SE Ranking (Analytics)</text>
+
+  <text x="100" y="550" font-family="monospace" font-size="18" fill="#BCA3A8">GitHub: @Vishwakarmasuraj333 | Location: Mumbai / Bhayandar, India</text>
+</svg>

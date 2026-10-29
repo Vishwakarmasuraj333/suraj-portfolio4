@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-maroon-950: #1C1015;
+  --color-maroon-900: #2B1019;
+  --color-maroon-850: #35121D;
+  --color-maroon-800: #401421;
+  --color-maroon-700: #641E32;
+  --color-maroon-600: #7D293F;
+  --color-gold-500: #D6B477;
+  --color-gold-400: #E8D2A1;
+  --color-ivory-100: #FCFAF6;
+  --color-ivory-200: #F7F1E8;
+  --color-ivory-300: #EFE4D4;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  background-color: #1C1015;
+  color: #F7F1E8;
+}
+
+/* Light Theme overrides */
+html:not(.dark) {
+  background-color: #F7F1E8;
+  color: #2B1019;
+}
+
+html:not(.dark) body {
+  background-color: #FAF6F0;
+  color: #2B1019;
+}
+
+html:not(.dark) .bg-maroon-950 {
+  background-color: #F4ECE1 !important;
+}
+
+html:not(.dark) .bg-maroon-900\/80,
+html:not(.dark) .bg-maroon-900\/70,
+html:not(.dark) .bg-maroon-900\/60,
+html:not(.dark) .bg-maroon-900\/50,
+html:not(.dark) .bg-maroon-900\/40 {
+  background-color: rgba(245, 237, 226, 0.9) !important;
+}
+
+html:not(.dark) .bg-maroon-850 {
+  background-color: #EFE3D3 !important;
+}
+
+html:not(.dark) .text-ivory-100 {
+  color: #2B1019 !important;
+}
+
+html:not(.dark) .text-ivory-200 {
+  color: #401421 !important;
+}
+
+html:not(.dark) .text-ivory-300 {
+  color: #641E32 !important;
+}
+
+html:not(.dark) .text-ivory-300\/80,
+html:not(.dark) .text-ivory-300\/75,
+html:not(.dark) .text-ivory-300\/70,
+html:not(.dark) .text-ivory-300\/60 {
+  color: #641E32 !important;
+  opacity: 0.85 !important;
+}
+
+html:not(.dark) .border-gold-500\/15,
+html:not(.dark) .border-gold-500\/20,
+html:not(.dark) .border-gold-500\/25,
+html:not(.dark) .border-gold-500\/30 {
+  border-color: rgba(184, 147, 84, 0.35) !important;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: #7D293F;
+  color: #F5E8C7;
+}
+
+/* Custom luxury scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1C1015;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #401421;
+  border-radius: 4px;
+  border: 1px solid rgba(214, 180, 119, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7D293F;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,0 +1,89 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1642 >>
+stream
+BT
+/F1 22 Tf
+50 740 Td
+(SURAJ VISHWAKARMA) Tj
+/F2 12 Tf
+0 -22 Td
+(Full Stack Developer | M.Sc. IT Student) Tj
+0 -18 Td
+(Email: surajvishwakarma333@gmail.com | Location: Mumbai / Bhayandar, India) Tj
+0 -15 Td
+(GitHub: https://github.com/Vishwakarmasuraj333 | LinkedIn: suraj-vishwakarma-2ab64436a) Tj
+0 -28 Td
+/F1 15 Tf
+(CORE TECHNICAL SKILLS) Tj
+/F2 11 Tf
+0 -18 Td
+(Frontend: React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, CSS3) Tj
+0 -15 Td
+(Backend: Node.js, Express.js, Python, FastAPI, REST APIs, Authentication) Tj
+0 -15 Td
+(Databases: MongoDB, PostgreSQL, MySQL) Tj
+0 -15 Td
+(Tools: Git, GitHub, GitLab, VS Code, Postman) Tj
+0 -28 Td
+/F1 15 Tf
+(FEATURED ENGINEERING PROJECTS) Tj
+/F2 11 Tf
+0 -18 Td
+(1. IntelliTwin AI - Cybersecurity Anomaly Detection Platform) Tj
+0 -15 Td
+(   Technologies: Python, FastAPI, Next.js, PostgreSQL, XGBoost, SHAP) Tj
+0 -14 Td
+(   Repository: https://github.com/Vishwakarmasuraj333/IntelliTwin-AI) Tj
+0 -18 Td
+(2. Nexora Social - Multi-Channel Publishing & Social Management) Tj
+0 -15 Td
+(   Technologies: Next.js, React, Node.js, Tailwind CSS) Tj
+0 -14 Td
+(   Repository: https://github.com/Vishwakarmasuraj333/-Nexora-Social) Tj
+0 -18 Td
+(3. SE Ranking Research Studio - SERP Analytics & Search Intelligence) Tj
+0 -15 Td
+(   Technologies: React, JavaScript, Node.js, REST APIs) Tj
+0 -14 Td
+(   Repository: https://github.com/MamtaYdvTech1/SE-Ranking) Tj
+0 -28 Td
+/F1 15 Tf
+(EDUCATION & CREDENTIALS) Tj
+/F2 11 Tf
+0 -18 Td
+(M.Sc. in Information Technology - Abhinav College, Bhayandar [Pursuing]) Tj
+0 -16 Td
+(B.Sc. in Information Technology - Abhinav College, Bhayandar [Completed 2025]) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001945 00000 n 
+0000002020 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2090
+%%EOF
