@@ -70,6 +70,17 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {project.tagline}
         </p>
 
+        {/* High-res project dashboard preview image */}
+        {project.image && (
+          <div className="mb-6 rounded-xl overflow-hidden border border-gold-500/25 max-h-72 bg-maroon-950">
+            <img
+              src={project.image}
+              alt={`${project.title} High Resolution Interface`}
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+        )}
+
         {/* Detailed Description */}
         <div className="space-y-4 mb-6 text-sm text-ivory-300 leading-relaxed border-t border-b border-gold-500/15 py-4">
           <p>{project.longDescription}</p>

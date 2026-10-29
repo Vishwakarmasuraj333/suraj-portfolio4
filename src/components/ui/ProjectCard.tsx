@@ -165,6 +165,37 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     );
   };
 
+  // Render project visual: Real high-res dashboard screenshot or fallback illustration
+  const renderVisual = () => {
+    if (project.image) {
+      return (
+        <div className="relative w-full h-52 overflow-hidden border-b border-gold-500/20 group-hover:border-gold-500/40 transition-colors bg-maroon-950">
+          <img
+            src={project.image}
+            alt={`${project.title} Interface Preview`}
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          {/* Subtle luxury vignette & category chip */}
+          <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/20 to-black/30 pointer-events-none" />
+          
+          <div className="absolute top-3 left-3 flex items-center gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full bg-maroon-950/80 border border-gold-500/30 text-gold-400 backdrop-blur-md">
+              {project.category}
+            </span>
+          </div>
+
+          <div className="absolute top-3 right-3">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-maroon-950/80 border border-gold-500/20 text-ivory-300/80 backdrop-blur-md">
+              0{index + 1}
+            </span>
+          </div>
+        </div>
+      );
+    }
+    return renderVisualIllustration();
+  };
+
   return (
     <>
       <div
@@ -174,8 +205,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         style={tiltStyle}
         className="group relative flex flex-col rounded-2xl bg-gradient-to-b from-maroon-900/90 via-maroon-900/70 to-maroon-950 border border-gold-500/25 hover:border-gold-500/60 overflow-hidden shadow-xl shadow-maroon-950/60 transition-colors duration-300"
       >
-        {/* Generative Visual Header */}
-        {renderVisualIllustration()}
+        {/* Generative Visual or Real Screenshot Header */}
+        {renderVisual()}
 
         {/* Card Body */}
         <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">

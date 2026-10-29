@@ -8,7 +8,11 @@ import {
   Smartphone,
   Lightbulb,
   CheckCircle,
+  GraduationCap,
+  MapPin,
+  Sparkles,
 } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
 export function AboutSection() {
   const coreCompetencies = [
@@ -53,16 +57,61 @@ export function AboutSection() {
           subtitle="A disciplined approach to crafting scalable full-stack applications and intuitive interfaces."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Editorial Narrative */}
-          <div className="lg:col-span-6 space-y-6">
-            <div className="p-8 rounded-2xl bg-gradient-to-b from-maroon-900/70 to-maroon-950 border border-gold-500/25 shadow-xl shadow-maroon-950/40 relative">
-              <span className="font-serif text-6xl text-gold-500/20 absolute top-4 right-6 pointer-events-none select-none">
+        {/* Top Grid: Portrait + Narrative */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
+          {/* Left Column: Editorial Portrait Showcase */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px] group">
+              {/* Luxury Accent Backing Ring */}
+              <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-gold-500/25 via-maroon-700/40 to-gold-400/20 blur-lg opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Main Portrait Frame */}
+              <div className="relative rounded-3xl overflow-hidden border-2 border-gold-500/40 bg-maroon-950 shadow-2xl shadow-maroon-950">
+                <img
+                  src="/images/suraj-portrait.jpg"
+                  alt="Suraj Vishwakarma - Software Developer"
+                  className="w-full h-[460px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Atmospheric Vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/25 to-transparent pointer-events-none" />
+
+                {/* Floating Bottom Credentials Badge */}
+                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-maroon-950/85 border border-gold-500/30 backdrop-blur-md">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="font-serif text-lg text-ivory-100 font-medium">
+                      Suraj Vishwakarma
+                    </h3>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                      Active
+                    </span>
+                  </div>
+
+                  <div className="space-y-1 text-xs text-ivory-300/80 font-light">
+                    <p className="flex items-center gap-1.5 text-gold-400">
+                      <GraduationCap className="w-3.5 h-3.5 text-gold-400" />
+                      <span>M.Sc. IT Scholar • Abhinav College</span>
+                    </p>
+                    <p className="flex items-center gap-1.5 text-ivory-300/70">
+                      <MapPin className="w-3.5 h-3.5 text-gold-400" />
+                      <span>{siteConfig.location}</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Editorial Bio Narrative */}
+          <div className="lg:col-span-7 space-y-6">
+            <div className="p-8 sm:p-9 rounded-2xl bg-gradient-to-b from-maroon-900/80 via-maroon-900/60 to-maroon-950 border border-gold-500/25 shadow-xl shadow-maroon-950/50 relative">
+              <span className="font-serif text-6xl text-gold-500/15 absolute top-4 right-6 pointer-events-none select-none">
                 “
               </span>
 
-              <h3 className="font-serif text-2xl text-ivory-100 font-normal mb-4">
-                Full Stack Developer & M.Sc. IT Scholar
+              <h3 className="font-serif text-2xl sm:text-3xl text-ivory-100 font-normal mb-4">
+                Full Stack Developer & Technical Craftsman
               </h3>
 
               {/* Exact user-provided copy */}
@@ -70,11 +119,11 @@ export function AboutSection() {
                 I’m Suraj Vishwakarma, a Full Stack Developer and M.Sc. IT student passionate about building responsive web applications, intuitive user interfaces, and dependable backend systems. I enjoy turning ideas into practical digital products using modern JavaScript technologies, clean architecture, and thoughtful design.
               </p>
 
-              <p className="text-ivory-300/80 text-sm leading-relaxed font-light">
+              <p className="text-ivory-300/85 text-sm leading-relaxed font-light mb-6">
                 Whether deploying machine learning inference pipelines with FastAPI and Next.js, or structuring centralized social management workflows, I focus on clean code, testability, and human-centric developer ergonomics.
               </p>
 
-              <div className="mt-6 pt-6 border-t border-gold-500/20 flex flex-wrap gap-4 text-xs font-mono text-gold-400">
+              <div className="pt-6 border-t border-gold-500/20 flex flex-wrap gap-4 text-xs font-mono text-gold-400">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> Real Project Implementations
                 </span>
@@ -87,8 +136,8 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Architectural Tenets */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Architectural Philosophy Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-5 rounded-xl bg-maroon-900/40 border border-gold-500/15">
                 <span className="text-xs uppercase tracking-wider text-gold-400 font-semibold block mb-1">
                   Philosophy
@@ -108,9 +157,20 @@ export function AboutSection() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Right: Technical Focus Areas */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Core Competencies Matrix */}
+        <div>
+          <div className="mb-6 flex items-center justify-between">
+            <h4 className="font-serif text-xl text-ivory-100 font-medium">
+              Core Technical Competencies
+            </h4>
+            <span className="text-xs font-mono text-gold-400/80">
+              6 Disciplines
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {coreCompetencies.map((comp) => {
               const Icon = comp.icon;
               return (
@@ -136,4 +196,3 @@ export function AboutSection() {
     </section>
   );
 }
-

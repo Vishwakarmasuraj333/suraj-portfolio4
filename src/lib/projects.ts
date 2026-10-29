@@ -35,6 +35,7 @@ export const projects: Project[] = [
     role: "Full Stack & ML Integration Developer",
     status: "Active",
     accentColor: "#D6B477",
+    image: "/images/projects/intellitwin.jpg",
   },
   {
     id: "nexora-social",
@@ -69,6 +70,7 @@ export const projects: Project[] = [
     role: "Lead Full Stack Architect",
     status: "In Development",
     accentColor: "#E8D2A1",
+    image: "/images/projects/nexora.jpg",
   },
   {
     id: "se-ranking",
@@ -103,6 +105,7 @@ export const projects: Project[] = [
     role: "Core Web Developer & Data Interface Engineer",
     status: "Completed",
     accentColor: "#D6B477",
+    image: "/images/projects/seranking.jpg",
   },
 ];
 

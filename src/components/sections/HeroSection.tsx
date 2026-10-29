@@ -9,11 +9,12 @@ import { ArrowDown, Sparkles, ArrowRight, Github, Linkedin, Download } from "luc
 
 export function HeroSection() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
+  const [heroVisualMode, setHeroVisualMode] = useState<"3d" | "portrait">("3d");
 
   return (
     <section
       id="home"
-      className="relative min-h-[95vh] flex items-center justify-center pt-28 pb-16 lg:py-0 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 lg:pt-36 lg:pb-24 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -114,13 +115,65 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 3D Interactive Sculpture */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
+          {/* Right Column: 3D Interactive Sculpture or Studio Portrait */}
+          <div className="lg:col-span-5 relative flex flex-col items-center justify-center">
             {/* Ambient luxury glow backdrop */}
             <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-maroon-700/25 blur-3xl pointer-events-none" />
 
-            <div className="relative w-full max-w-[500px]">
-              <HeroScene />
+            {/* View Mode Pill Toggle */}
+            <div className="relative z-20 flex items-center gap-2 p-1 rounded-full bg-maroon-900/80 border border-gold-500/25 backdrop-blur-md mb-4 shadow-md">
+              <button
+                type="button"
+                onClick={() => setHeroVisualMode("3d")}
+                className={`px-3.5 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
+                  heroVisualMode === "3d"
+                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-semibold shadow-sm"
+                    : "text-ivory-300/80 hover:text-gold-300"
+                }`}
+              >
+                ✦ 3D Sculpture
+              </button>
+              <button
+                type="button"
+                onClick={() => setHeroVisualMode("portrait")}
+                className={`px-3.5 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
+                  heroVisualMode === "portrait"
+                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-semibold shadow-sm"
+                    : "text-ivory-300/80 hover:text-gold-300"
+                }`}
+              >
+                ✦ Portrait
+              </button>
+            </div>
+
+            <div className="relative w-full max-w-[500px] flex items-center justify-center">
+              {heroVisualMode === "3d" ? (
+                <HeroScene />
+              ) : (
+                <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-3xl overflow-hidden border-2 border-gold-500/40 shadow-2xl shadow-maroon-950 group animate-in fade-in zoom-in-95 duration-500">
+                  <img
+                    src="/images/suraj-portrait.jpg"
+                    alt="Suraj Vishwakarma - Full Stack Developer"
+                    className="w-full h-[440px] sm:h-[480px] md:h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                  {/* Luxury bottom gradient & details badge */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/20 to-transparent pointer-events-none" />
+                  
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-maroon-950/85 border border-gold-500/30 backdrop-blur-md">
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="font-serif text-lg text-ivory-100 font-medium">
+                        Suraj Vishwakarma
+                      </p>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-gold-500/15 border border-gold-500/30 text-gold-400">
+                        Full Stack
+                      </span>
+                    </div>
+                    <p className="text-xs text-ivory-300/80 font-light">
+                      M.Sc. IT Scholar • Next.js & Python Architecture
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

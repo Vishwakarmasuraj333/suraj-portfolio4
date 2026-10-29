@@ -18,6 +18,7 @@ export interface Project {
   role: string;
   status: "Active" | "Completed" | "In Development";
   accentColor: string;
+  image?: string;
 }
 
 export interface SkillItem {
