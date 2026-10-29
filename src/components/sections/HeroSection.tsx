@@ -1,30 +1,70 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "../ui/Button";
 import { HeroScene } from "../three/HeroScene";
 import { ResumeModal } from "../ui/ResumeModal";
-import { ArrowDown, Sparkles, ArrowRight, Github, Linkedin, Download } from "lucide-react";
+import {
+  ArrowDown,
+  Sparkles,
+  ArrowRight,
+  Github,
+  Linkedin,
+  Download,
+  Code2,
+  Cpu,
+  MapPin,
+  Box,
+  User,
+} from "lucide-react";
 
 export function HeroSection() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
-  const [heroVisualMode, setHeroVisualMode] = useState<"3d" | "portrait">("3d");
+  const [visualMode, setVisualMode] = useState<"portrait" | "3d">("portrait");
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [tiltStyle, setTiltStyle] = useState({});
+
+  // 3D subtle tilt interaction on portrait
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+
+    setTiltStyle({
+      transform: `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`,
+      transition: "transform 0.1s ease-out",
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTiltStyle({
+      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+      transition: "transform 0.5s ease-out",
+    });
+  };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-32 pb-20 lg:pt-36 lg:pb-24 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-36 sm:pt-40 lg:pt-44 pb-20 lg:pb-28 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Narrative & Action */}
+          {/* Left Column: Narrative, Typography & CTAs */}
           <div className="lg:col-span-7 flex flex-col items-start z-10 text-left">
             {/* Availability Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-maroon-900/80 border border-gold-500/30 backdrop-blur-md mb-6 shadow-sm">
-              <span className="relative flex h-2 w-2">
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-maroon-900/90 border border-gold-500/35 backdrop-blur-md mb-6 shadow-md shadow-maroon-950/60">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
               <span className="text-xs uppercase tracking-[0.2em] font-medium text-gold-300">
                 {siteConfig.availability}
@@ -62,7 +102,7 @@ export function HeroSection() {
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="group flex items-center gap-2"
+                className="group flex items-center gap-2 shadow-lg shadow-gold-500/20"
               >
                 <span>Explore My Work</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -82,11 +122,39 @@ export function HeroSection() {
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-400 hover:text-ivory-100 underline underline-offset-8 decoration-gold-500/40 hover:decoration-gold-400 transition-all px-2 py-1"
               >
-                Let&apos;s Connect
+                Let&apos;s Connect ✦
               </a>
             </div>
 
-            {/* Verified Quick Social Links */}
+            {/* Quick Metrics Bar */}
+            <div className="grid grid-cols-3 gap-3 w-full max-w-md p-3.5 rounded-2xl bg-maroon-900/50 border border-gold-500/20 backdrop-blur-sm mb-6">
+              <div className="text-center sm:text-left sm:pl-2">
+                <span className="block font-serif text-lg sm:text-xl text-gold-400 font-semibold">
+                  3+
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-ivory-300/70">
+                  Core Projects
+                </span>
+              </div>
+              <div className="text-center sm:text-left border-x border-gold-500/15 px-2">
+                <span className="block font-serif text-lg sm:text-xl text-gold-400 font-semibold">
+                  M.Sc. IT
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-ivory-300/70">
+                  Scholar
+                </span>
+              </div>
+              <div className="text-center sm:text-left sm:pl-2">
+                <span className="block font-serif text-lg sm:text-xl text-emerald-400 font-semibold">
+                  100%
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-ivory-300/70">
+                  Verified Work
+                </span>
+              </div>
+            </div>
+
+            {/* Channels */}
             <div className="flex items-center gap-4 pt-4 border-t border-gold-500/15 text-xs text-ivory-300/70">
               <span className="font-mono text-[11px] uppercase tracking-wider text-gold-500/80">
                 Channels:
@@ -115,62 +183,111 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: 3D Interactive Sculpture or Studio Portrait */}
+          {/* Right Column: Masterpiece Showcase (Developer Portrait + 3D Mode) */}
           <div className="lg:col-span-5 relative flex flex-col items-center justify-center">
             {/* Ambient luxury glow backdrop */}
-            <div className="absolute w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-maroon-700/25 blur-3xl pointer-events-none" />
+            <div className="absolute w-80 h-80 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-maroon-700/30 via-gold-500/15 to-maroon-900/40 blur-3xl pointer-events-none" />
 
-            {/* View Mode Pill Toggle */}
-            <div className="relative z-20 flex items-center gap-2 p-1 rounded-full bg-maroon-900/80 border border-gold-500/25 backdrop-blur-md mb-4 shadow-md">
+            {/* Interactive Mode Switcher */}
+            <div className="relative z-20 flex items-center gap-1.5 p-1 rounded-full bg-maroon-900/90 border border-gold-500/30 backdrop-blur-md mb-5 shadow-lg shadow-maroon-950/70">
               <button
                 type="button"
-                onClick={() => setHeroVisualMode("3d")}
-                className={`px-3.5 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
-                  heroVisualMode === "3d"
-                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-semibold shadow-sm"
-                    : "text-ivory-300/80 hover:text-gold-300"
+                onClick={() => setVisualMode("portrait")}
+                className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
+                  visualMode === "portrait"
+                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-bold shadow-md shadow-gold-500/25"
+                    : "text-ivory-300/80 hover:text-gold-300 hover:bg-maroon-800/40"
                 }`}
               >
-                ✦ 3D Sculpture
+                <User className="w-3.5 h-3.5" />
+                <span>Developer Portrait</span>
               </button>
               <button
                 type="button"
-                onClick={() => setHeroVisualMode("portrait")}
-                className={`px-3.5 py-1 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
-                  heroVisualMode === "portrait"
-                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-semibold shadow-sm"
-                    : "text-ivory-300/80 hover:text-gold-300"
+                onClick={() => setVisualMode("3d")}
+                className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 ${
+                  visualMode === "3d"
+                    ? "bg-gradient-to-r from-gold-500 to-gold-600 text-maroon-950 font-bold shadow-md shadow-gold-500/25"
+                    : "text-ivory-300/80 hover:text-gold-300 hover:bg-maroon-800/40"
                 }`}
               >
-                ✦ Portrait
+                <Box className="w-3.5 h-3.5" />
+                <span>Interactive 3D</span>
               </button>
             </div>
 
-            <div className="relative w-full max-w-[500px] flex items-center justify-center">
-              {heroVisualMode === "3d" ? (
-                <HeroScene />
+            {/* Display Canvas or Portrait */}
+            <div className="relative w-full max-w-[460px] flex items-center justify-center">
+              {visualMode === "3d" ? (
+                <div className="w-full animate-in fade-in zoom-in-95 duration-500">
+                  <HeroScene />
+                </div>
               ) : (
-                <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-3xl overflow-hidden border-2 border-gold-500/40 shadow-2xl shadow-maroon-950 group animate-in fade-in zoom-in-95 duration-500">
-                  <img
-                    src="/images/suraj-portrait.jpg"
-                    alt="Suraj Vishwakarma - Full Stack Developer"
-                    className="w-full h-[440px] sm:h-[480px] md:h-[520px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Luxury bottom gradient & details badge */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/20 to-transparent pointer-events-none" />
-                  
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-maroon-950/85 border border-gold-500/30 backdrop-blur-md">
-                    <div className="flex items-center justify-between mb-1">
-                      <p className="font-serif text-lg text-ivory-100 font-medium">
-                        Suraj Vishwakarma
-                      </p>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-gold-500/15 border border-gold-500/30 text-gold-400">
-                        Full Stack
-                      </span>
+                <div
+                  ref={cardRef}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  style={tiltStyle}
+                  className="group relative w-full max-w-[390px] sm:max-w-[420px] rounded-3xl p-3 bg-gradient-to-b from-maroon-850/80 via-maroon-900/70 to-maroon-950 border-2 border-gold-500/40 shadow-2xl shadow-maroon-950/80 transition-all duration-300 select-none animate-in fade-in zoom-in-95"
+                >
+                  {/* Outer Champagne Decorative Ring */}
+                  <div className="absolute -inset-1 rounded-[28px] border border-gold-500/20 pointer-events-none" />
+
+                  {/* Top Floating Glass Badge */}
+                  <div className="absolute top-6 left-6 z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-maroon-950/85 border border-gold-500/35 backdrop-blur-md shadow-lg">
+                    <Code2 className="w-3.5 h-3.5 text-gold-400" />
+                    <span className="text-[11px] font-mono text-ivory-200 font-medium">
+                      Full Stack Engineer
+                    </span>
+                  </div>
+
+                  {/* Top-Right AI Microservice Badge */}
+                  <div className="absolute top-6 right-6 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-maroon-950/85 border border-gold-500/35 backdrop-blur-md shadow-lg">
+                    <Cpu className="w-3.5 h-3.5 text-gold-400" />
+                    <span className="text-[11px] font-mono text-gold-300 font-medium">
+                      AI & APIs
+                    </span>
+                  </div>
+
+                  {/* Main Portrait Image Container */}
+                  <div className="relative rounded-2xl overflow-hidden bg-maroon-950 border border-gold-500/20 aspect-[4/5] sm:aspect-[4/5.2]">
+                    <img
+                      src="/images/suraj-portrait.jpg"
+                      alt="Suraj Vishwakarma - Full Stack Developer"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      loading="eager"
+                    />
+
+                    {/* Subtle Editorial Vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-maroon-950 via-maroon-950/15 to-transparent pointer-events-none" />
+
+                    {/* Floating Bottom Card Over Image */}
+                    <div className="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-maroon-950/90 border border-gold-500/35 backdrop-blur-md shadow-lg">
+                      <div className="flex items-center justify-between mb-1">
+                        <div>
+                          <p className="font-serif text-base sm:text-lg text-ivory-100 font-medium">
+                            Suraj Vishwakarma
+                          </p>
+                          <p className="text-[11px] text-gold-400 font-mono">
+                            M.Sc. IT Scholar • Abhinav College
+                          </p>
+                        </div>
+                        <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-[10px] font-mono text-emerald-300">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                          Online
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2 border-t border-gold-500/15 text-[11px] text-ivory-300/80 font-mono">
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-gold-400" />
+                          <span>Mumbai, IN</span>
+                        </span>
+                        <span className="text-gold-400/90">
+                          Next.js • Python • ML
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-xs text-ivory-300/80 font-light">
-                      M.Sc. IT Scholar • Next.js & Python Architecture
-                    </p>
                   </div>
                 </div>
               )}
@@ -201,4 +318,3 @@ export function HeroSection() {
     </section>
   );
 }
-
